@@ -1,0 +1,14 @@
+# Default values for token-validator
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+image:
+  repository: ghcr.io/metal-toolbox/audito-maldito/audito-maldito
+  pullPolicy: IfNotPresent
+  tag: "v0.0.1"
+resources:
+  limits:
+    cpu: 1
+    memory: 512Mi
+  requests:
+    cpu: 1
+    memory: 512Mi
