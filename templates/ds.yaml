@@ -1,0 +1,101 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  annotations:
+  labels:
+    app: {{ template "app.name" . }}
+    component: app
+  name: {{ template "app.name" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "app.name" . }}
+      component: app
+  template:
+    metadata:
+      labels:
+        component: app
+        app: {{ template "app.name" . }}
+    spec:
+      initContainers:
+      - name: init-audit-logs
+        image: ghcr.io/metal-toolbox/audittail:v0.5.0
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+        args:
+          - 'init'
+          - '-f'
+          - '/app-audit/audit.log'
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "500m"
+        volumeMounts:
+          - mountPath: /app-audit
+            name: audit-logs
+      containers:
+      - image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: logfollower
+        securityContext:
+          allowPrivilegeEscalation: false
+        env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+          readOnly: true
+        - name: osrelease
+          mountPath: /etc/os-release
+          readOnly: true
+        - name: machineid
+          mountPath: /etc/machine-id
+          readOnly: true
+        - name: machineid
+          mountPath: /var/lib/dbus/machine-id
+          readOnly: true
+        - name: runtime
+          mountPath: /var/run/audito-maldito
+        # TODO(jaosorior): Add readiness and liveness probes
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+      - name: audittail
+        image: ghcr.io/metal-toolbox/audittail:v0.5.0
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+        args:
+          - '-f'
+          - '/app-audit/audit.log'
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "500m"
+        volumeMounts:
+          - mountPath: /app-audit
+            name: audit-logs
+      volumes:
+        - name: audit-logs
+          emptyDir: {}
+        - name: varlog
+          hostPath:
+            path: /var/log
+        - name: osrelease
+          hostPath:
+            path: /etc/os-release
+        - name: machineid
+          hostPath:
+            path: /etc/machine-id
+        - name: machineid
+          hostPath:
+            path: /var/lib/dbus/machine-id
+        - name: runtime
+          hostPath:
+            path: /var/run/audito-maldito
