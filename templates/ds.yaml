@@ -57,9 +57,6 @@ spec:
         - name: machineid
           mountPath: /etc/machine-id
           readOnly: true
-        - name: machineid
-          mountPath: /var/lib/dbus/machine-id
-          readOnly: true
         - name: runtime
           mountPath: /var/run/audito-maldito
         # TODO(jaosorior): Add readiness and liveness probes
@@ -93,9 +90,6 @@ spec:
         - name: machineid
           hostPath:
             path: /etc/machine-id
-        - name: machineid
-          hostPath:
-            path: /var/lib/dbus/machine-id
         - name: runtime
           hostPath:
             path: /var/run/audito-maldito
