@@ -59,6 +59,8 @@ spec:
           readOnly: true
         - name: runtime
           mountPath: /var/run/audito-maldito
+        - mountPath: /app-audit
+          name: audit-logs
         # TODO(jaosorior): Add readiness and liveness probes
         resources:
 {{ toYaml .Values.resources | indent 10 }}
