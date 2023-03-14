@@ -1,4 +1,4 @@
-# Krakend
+# audito-maldito helm chart
 
 ![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=for-the-badge)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=for-the-badge)
