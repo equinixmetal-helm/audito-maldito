@@ -1,4 +1,4 @@
-name: Release Krakend helm chart
+name: Release audito-maldito helm chart
 
 on:
   push:
