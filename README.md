@@ -22,7 +22,8 @@ actual audito-maldito workload, and another one outputting the audit logs.
 |-----|------|---------|-------------|
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/metal-toolbox/audito-maldito/audito-maldito"` |  |
-| image.tag | string | `"v0.1.0"` |  |
+| image.tag | string | `"v0.1.4"` |  |
+| priorityClassName | string | `""` |  |
 | resources.limits.cpu | int | `1` |  |
 | resources.limits.memory | string | `"512Mi"` |  |
 | resources.requests.cpu | int | `1` |  |
