@@ -28,7 +28,41 @@ spec:
         args:
           - 'init'
           - '-f'
-          - '/app-audit/audit.log'
+          - '/app-audit/app-events-output.log'
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "500m"
+        volumeMounts:
+          - mountPath: /app-audit
+            name: audit-logs
+      - name: init-audit-pipe
+        image: ghcr.io/metal-toolbox/audittail:v0.5.0
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+        args:
+          - 'init'
+          - '-f'
+          - '/app-audit/audit-pipe'
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "500m"
+        volumeMounts:
+          - mountPath: /app-audit
+            name: audit-logs
+      - name: init-sshd-pipe
+        image: ghcr.io/metal-toolbox/audittail:v0.5.0
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+        args:
+          - 'init'
+          - '-f'
+          - '/app-audit/sshd-pipe'
         resources:
           limits:
             memory: "50Mi"
@@ -38,7 +72,7 @@ spec:
             name: audit-logs
       containers:
       - image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        imagePullPolicy: Always
         name: logfollower
         securityContext:
           allowPrivilegeEscalation: false
@@ -47,6 +81,11 @@ spec:
         {{- if .Values.metrics.enabled }}
           - "--metrics"
         {{- end }}
+          - '/usr/bin/audito-maldito'
+          - '--sshd-log-file-path'
+          - '/app-audit/sshd-pipe'
+          - '--auditd-log-file-path'
+          - '/app-audit/audit-pipe'
         env:
           - name: NODE_NAME
             valueFrom:
@@ -86,7 +125,7 @@ spec:
           allowPrivilegeEscalation: false
         args:
           - '-f'
-          - '/app-audit/audit.log'
+          - '/app-audit/app-events-output.log'
         resources:
           limits:
             memory: "50Mi"
@@ -94,6 +133,24 @@ spec:
         volumeMounts:
           - mountPath: /app-audit
             name: audit-logs
+      - name: rsyslog
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}-rsyslog"
+        imagePullPolicy: Always
+        securityContext:
+          allowPrivilegeEscalation: false
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+          readOnly: true
+        - name: machineid
+          mountPath: /etc/machine-id
+          readOnly: true
+        - mountPath: /app-audit
+          name: audit-logs
       volumes:
         - name: audit-logs
           emptyDir: {}

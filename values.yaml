@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 image:
   repository: ghcr.io/metal-toolbox/audito-maldito/audito-maldito
-  pullPolicy: IfNotPresent
-  tag: "v0.3.0"
+  pullPolicy: Always
+  tag: "v0.4.0"
 resources:
   limits:
     cpu: 1
