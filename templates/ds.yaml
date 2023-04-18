@@ -42,6 +42,9 @@ spec:
         name: logfollower
         securityContext:
           allowPrivilegeEscalation: false
+        args:
+          - "--healthz"
+          - "--metrics"
         env:
           - name: NODE_NAME
             valueFrom:
