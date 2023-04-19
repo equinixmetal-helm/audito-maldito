@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: audit-log-verifier
+  namespace: kube-system
+  labels:
+    app: audit-log-verifier
+spec:
+  selector:
+    matchLabels:
+      app: audit-log-verifier
+  template:
+    metadata:
+      labels:
+        name: audit-log-verifier
+    spec:
+      containers:
+      - name: audit-log-verifier
+        image: ghcr.io/angrieralien/audit-log-verifier-exporter:v0.1.0
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+      - args:
+        -  '/usr/app/script_exporter'
+        -  '--config.file'
+        -  '/usr/app/script-exporter.yml'
+        volumeMounts:
+        - name: audit.log
+          mountPath: /var/log/audit/audit.log
+          readOnly: true
+      volumes:
+      - name: auditlog
+        hostPath:
+          path: /var/log/audit/audit.log
