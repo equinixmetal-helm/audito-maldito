@@ -17,6 +17,7 @@ spec:
       containers:
       - name: audit-log-verifier
         image: ghcr.io/angrieralien/audit-log-verifier-exporter:v0.1.0
+        imagePullPolicy: Always
         resources:
           limits:
             cpu: 100m
@@ -28,6 +29,8 @@ spec:
           -  '/usr/app/script_exporter'
           -  '--config.file'
           -  '/usr/app/script-exporter.yml'
+          -  '--config.shell'
+          -  '/bin/bash'
         volumeMounts:
         - name: auditlog
           mountPath: /var/log/audit/audit.log
