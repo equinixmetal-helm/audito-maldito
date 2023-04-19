@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        name: audit-log-verifier
+        app: audit-log-verifier
     spec:
       containers:
       - name: audit-log-verifier
@@ -28,7 +28,7 @@ spec:
           -  '--config.file'
           -  '/usr/app/script-exporter.yml'
         volumeMounts:
-        - name: audit.log
+        - name: auditlog
           mountPath: /var/log/audit/audit.log
           readOnly: true
       volumes:
