@@ -20,7 +20,6 @@ actual audito-maldito workload, and another one outputting the audit logs.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| health.enabled | bool | `true` |  |
 | health.readiness.initialDelaySeconds | int | `30` |  |
 | health.readiness.periodSeconds | int | `10` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
