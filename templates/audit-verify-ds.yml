@@ -23,10 +23,10 @@ spec:
           requests:
             cpu: 100m
             memory: 200Mi
-      - args:
-        -  '/usr/app/script_exporter'
-        -  '--config.file'
-        -  '/usr/app/script-exporter.yml'
+        - args:
+          -  '/usr/app/script_exporter'
+          -  '--config.file'
+          -  '/usr/app/script-exporter.yml'
         volumeMounts:
         - name: audit.log
           mountPath: /var/log/audit/audit.log
