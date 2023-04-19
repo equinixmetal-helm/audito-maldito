@@ -11,7 +11,7 @@ spec:
     - path: probe?name=audit-write-time
       scheme: http
       scrapeTimeout: 5s
-      port: http
+      port: 9172
   namespaceSelector:
     matchNames:
       - audito-maldito
