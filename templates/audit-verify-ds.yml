@@ -23,7 +23,7 @@ spec:
           requests:
             cpu: 100m
             memory: 200Mi
-        - args:
+        args:
           -  '/usr/app/script_exporter'
           -  '--config.file'
           -  '/usr/app/script-exporter.yml'
