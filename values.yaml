@@ -13,3 +13,10 @@ resources:
     cpu: 1
     memory: 512Mi
 priorityClassName: ""
+metrics:
+  enabled: true
+health:
+  enabled: true
+  readiness:
+    initialDelaySeconds: 30
+    periodSeconds: 10
