@@ -19,6 +19,7 @@ spec:
         image: ghcr.io/angrieralien/audit-log-verifier-exporter:v0.1.0
         resources:
           limits:
+            cpu: 100m
             memory: 200Mi
           requests:
             cpu: 100m
