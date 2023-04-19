@@ -26,7 +26,6 @@ spec:
             cpu: 100m
             memory: 200Mi
         args:
-          -  '/usr/app/script_exporter'
           -  '--config.file'
           -  '/usr/app/script-exporter.yml'
           -  '--config.shell'
