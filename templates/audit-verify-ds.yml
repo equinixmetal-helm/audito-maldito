@@ -16,6 +16,10 @@ spec:
     spec:
       containers:
       - name: audit-log-verifier
+        ports:
+          - containerPort: 9172
+            name: http
+            protocol: TCP      
         image: ghcr.io/angrieralien/audit-log-verifier-exporter:v0.1.0
         imagePullPolicy: Always
         resources:

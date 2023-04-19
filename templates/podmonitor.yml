@@ -8,10 +8,10 @@ spec:
     matchLabels:
       app: audit-log-verifier
   podMetricsEndpoints:
-    - path: probe?name=audit-write-time
+    - path: probe%3Fname%3Daudit-write-time
       scheme: http
       scrapeTimeout: 5s
-      port: 9172
+      port: http
   namespaceSelector:
     matchNames:
       - audito-maldito
