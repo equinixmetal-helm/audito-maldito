@@ -20,9 +20,13 @@ actual audito-maldito workload, and another one outputting the audit logs.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| health.enabled | bool | `true` |  |
+| health.readiness.initialDelaySeconds | int | `30` |  |
+| health.readiness.periodSeconds | int | `10` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/metal-toolbox/audito-maldito/audito-maldito"` |  |
-| image.tag | string | `"v0.1.7"` |  |
+| image.tag | string | `"v0.2.0"` |  |
+| metrics.enabled | bool | `true` |  |
 | priorityClassName | string | `""` |  |
 | resources.limits.cpu | int | `1` |  |
 | resources.limits.memory | string | `"512Mi"` |  |
