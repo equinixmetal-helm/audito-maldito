@@ -13,7 +13,8 @@ spec:
       scrapeTimeout: 5s
       port: http
       params:
-        name: audit-write-time 
+       name: 
+       - audit-write-time 
   namespaceSelector:
     matchNames:
       - audito-maldito
