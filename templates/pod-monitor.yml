@@ -1,0 +1,19 @@
+{{- if .Values.metrics.enabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name:  {{ template "app.name" . }}-pod-monitor
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "app.name" . }}
+  podMetricsEndpoints:
+    - path: metrics
+      scheme: http
+      scrapeTimeout: 5s
+      port: http
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+{{- end }}

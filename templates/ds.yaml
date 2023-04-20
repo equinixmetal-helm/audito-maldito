@@ -74,6 +74,10 @@ spec:
           periodSeconds: {{ .Values.health.readiness.periodSeconds }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
+        ports:
+          - containerPort: 2112
+            name: http
+            protocol: TCP
       - name: audittail
         image: ghcr.io/metal-toolbox/audittail:v0.5.0
         imagePullPolicy: {{ .Values.image.pullPolicy }}
