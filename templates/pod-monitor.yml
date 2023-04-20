@@ -1,3 +1,4 @@
+{{- if .Values.metrics.enabled }}
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
@@ -15,3 +16,4 @@ spec:
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}
+{{- end }}
