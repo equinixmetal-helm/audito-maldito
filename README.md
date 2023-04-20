@@ -1,6 +1,6 @@
 # audito-maldito helm chart
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=for-the-badge)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=for-the-badge)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=for-the-badge)
 ![AppVersion: v0.0.1](https://img.shields.io/badge/AppVersion-v0.0.1-informational?style=for-the-badge)
 
