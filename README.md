@@ -1,6 +1,6 @@
 # audito-maldito helm chart
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=for-the-badge)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=for-the-badge)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=for-the-badge)
 ![AppVersion: v0.0.1](https://img.shields.io/badge/AppVersion-v0.0.1-informational?style=for-the-badge)
 
@@ -24,7 +24,7 @@ actual audito-maldito workload, and another one outputting the audit logs.
 | health.readiness.periodSeconds | int | `10` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/metal-toolbox/audito-maldito/audito-maldito"` |  |
-| image.tag | string | `"v0.2.0"` |  |
+| image.tag | string | `"v0.3.0"` |  |
 | metrics.enabled | bool | `true` |  |
 | priorityClassName | string | `""` |  |
 | resources.limits.cpu | int | `1` |  |
