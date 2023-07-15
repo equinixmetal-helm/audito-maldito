@@ -92,17 +92,12 @@ spec:
               fieldRef:
                 fieldPath: spec.nodeName
         volumeMounts:
-        - name: varlog
-          mountPath: /var/log
-          readOnly: true
         - name: osrelease
           mountPath: /etc/os-release
           readOnly: true
         - name: machineid
           mountPath: /etc/machine-id
           readOnly: true
-        - name: runtime
-          mountPath: /var/run/audito-maldito
         - mountPath: /app-audit
           name: audit-logs
         readinessProbe:
