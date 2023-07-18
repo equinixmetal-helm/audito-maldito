@@ -158,9 +158,6 @@ spec:
         - name: machineid
           hostPath:
             path: /etc/machine-id
-        - name: runtime
-          hostPath:
-            path: /var/run/audito-maldito
       {{- if .Values.priorityClassName }}
       priorityClassName: {{ .Values.priorityClassName }}
       {{- end }}
