@@ -36,7 +36,7 @@ spec:
         volumeMounts:
           - mountPath: /app-audit
             name: audit-logs
-      - name: init-audit-pipe
+      - name: init-linux-audit-logs-pipe
         image: ghcr.io/metal-toolbox/audittail:v0.5.0
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         securityContext:
@@ -73,7 +73,7 @@ spec:
       containers:
       - image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: Always
-        name: logfollower
+        name: audito-maldito
         securityContext:
           allowPrivilegeEscalation: false
         args:
