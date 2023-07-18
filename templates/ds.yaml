@@ -75,6 +75,7 @@ spec:
         imagePullPolicy: Always
         name: audito-maldito
         securityContext:
+          runAsNonRoot: true
           allowPrivilegeEscalation: false
         args:
           - "--healthz"
