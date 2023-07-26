@@ -4,17 +4,25 @@
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=for-the-badge)
 ![AppVersion: v0.0.1](https://img.shields.io/badge/AppVersion-v0.0.1-informational?style=for-the-badge)
 
-This is a helm chart that deploys a [audito-maldito](https://github.com/metal-toolbox/audito-maldito) instance.
+A Helm chart for deploying [audito-maldito](audito-maldito) in Kubernetes.
+This chart is provided and maintained by your friends at Equinix Metal.
 
-## Description
-
-A Helm chart for deploying audito-maldito in Kubernetes provided
-and maintained by your friends at Equinix Metal.
+[audito-maldito]: https://github.com/metal-toolbox/audito-maldito
 
 ## Usage
 
-Audito-maldito is deployed as a daemonset with two containers. One running the
-actual audito-maldito workload, and another one outputting the audit logs.
+audito-maldito is deployed as a [daemonset](daemonset). This includes
+several containers:
+
+- `audito-maldito` - The containerized audito-maldito process. It reads from
+  data sources using named pipes provided via a shared volume
+- `rsyslog` - A containerized rsyslog process that reads log messages from
+  OpenSSH daemon and other sources and writes them to named pipes.
+  The named pipes are shared with audito-maldito via a shared volume
+- `audittail` - A containerized Go program that reads audito-maldito's
+  audit events and writes them to stdout
+
+[daemonset]: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
 
 ## Values
 
