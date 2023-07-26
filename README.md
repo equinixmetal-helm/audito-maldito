@@ -4,14 +4,14 @@
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=for-the-badge)
 ![AppVersion: v0.0.1](https://img.shields.io/badge/AppVersion-v0.0.1-informational?style=for-the-badge)
 
-A Helm chart for deploying [audito-maldito](audito-maldito) in Kubernetes.
+A Helm chart for deploying [audito-maldito][audito-maldito] in Kubernetes.
 This chart is provided and maintained by your friends at Equinix Metal.
 
 [audito-maldito]: https://github.com/metal-toolbox/audito-maldito
 
 ## Usage
 
-audito-maldito is deployed as a [daemonset](daemonset). This includes
+audito-maldito is deployed as a [daemonset][daemonset]. This includes
 several containers:
 
 - `audito-maldito` - The containerized audito-maldito process. It reads from
