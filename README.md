@@ -35,10 +35,10 @@ several containers:
 | image.tag | string | `"v0.4.1"` |  |
 | metrics.enabled | bool | `true` |  |
 | priorityClassName | string | `""` |  |
-| resources.limits.cpu | int | `1` |  |
+| resources.limits.cpu | string | `"500m"` |  |
 | resources.limits.memory | string | `"512Mi"` |  |
-| resources.requests.cpu | int | `1` |  |
-| resources.requests.memory | string | `"512Mi"` |  |
+| resources.requests.cpu | string | `"250m"` |  |
+| resources.requests.memory | string | `"256Mi"` |  |
 
 ## Development
 

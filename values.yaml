@@ -7,11 +7,11 @@ image:
   tag: "v0.4.1"
 resources:
   limits:
-    cpu: 1
+    cpu: 500m
     memory: 512Mi
   requests:
-    cpu: 1
-    memory: 512Mi
+    cpu: 250m
+    memory: 256Mi
 priorityClassName: ""
 metrics:
   enabled: true

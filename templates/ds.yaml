@@ -124,6 +124,9 @@ spec:
           - '-f'
           - '/app-audit/app-events-output.log'
         resources:
+          requests:
+            memory: "25Mi"
+            cpu: "250m"
           limits:
             memory: "50Mi"
             cpu: "500m"
@@ -136,6 +139,9 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
         resources:
+          requests:
+            memory: "1Gi"
+            cpu: "250m"
           limits:
             memory: "2Gi"
             cpu: "500m"
