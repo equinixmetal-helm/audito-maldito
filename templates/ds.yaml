@@ -82,9 +82,9 @@ spec:
         {{- if .Values.metrics.enabled }}
           - "--metrics"
         {{- end }}
-          - '--sshd-log-file-path'
+          - '--sshd-pipe-path'
           - '/app-audit/sshd-pipe'
-          - '--auditd-log-file-path'
+          - '--auditd-pipe-path'
           - '/app-audit/audit-pipe'
           - '--app-events-output'
           - '/app-audit/app-events-output.log'
