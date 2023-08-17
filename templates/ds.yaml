@@ -82,11 +82,12 @@ spec:
         {{- if .Values.metrics.enabled }}
           - "--metrics"
         {{- end }}
-          - '/usr/bin/audito-maldito'
           - '--sshd-log-file-path'
           - '/app-audit/sshd-pipe'
           - '--auditd-log-file-path'
           - '/app-audit/audit-pipe'
+          - '--app-events-output'
+          - '/app-audit/app-events-output.log'
         env:
           - name: NODE_NAME
             valueFrom:
