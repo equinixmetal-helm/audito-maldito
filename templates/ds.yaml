@@ -136,6 +136,9 @@ spec:
       - name: rsyslog
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}-rsyslog"
         imagePullPolicy: Always
+        command:
+          - "rsyslogd"
+          - "-n"
         securityContext:
           allowPrivilegeEscalation: false
         resources:
