@@ -32,7 +32,7 @@ several containers:
 | health.readiness.periodSeconds | int | `10` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/metal-toolbox/audito-maldito/audito-maldito"` |  |
-| image.tag | string | `"v0.5.0"` |  |
+| image.tag | string | `"v0.5.1"` |  |
 | metrics.enabled | bool | `true` |  |
 | priorityClassName | string | `""` |  |
 | resources.limits.cpu | string | `"500m"` |  |
