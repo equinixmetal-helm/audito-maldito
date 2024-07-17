@@ -39,6 +39,10 @@ several containers:
 | resources.limits.memory | string | `"512Mi"` |  |
 | resources.requests.cpu | string | `"250m"` |  |
 | resources.requests.memory | string | `"256Mi"` |  |
+| rsyslog.resources.limits.cpu | string | `"500m"` |  |
+| rsyslog.resources.limits.memory | string | `"512Mi"` |  |
+| rsyslog.resources.requests.cpu | string | `"250m"` |  |
+| rsyslog.resources.requests.memory | string | `"256Mi"` |  |
 
 ## Development
 
