@@ -12,6 +12,14 @@ resources:
   requests:
     cpu: 250m
     memory: 256Mi
+rsyslog:
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 250m
+    limits:
+      memory: 512Mi
+      cpu: 500m
 priorityClassName: ""
 metrics:
   enabled: true
