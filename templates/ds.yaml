@@ -142,12 +142,7 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
         resources:
-          requests:
-            memory: "1Gi"
-            cpu: "250m"
-          limits:
-            memory: "2Gi"
-            cpu: "500m"
+{{ toYaml .Values.rsyslog.resources | indent 10 }}
         volumeMounts:
         - name: varlog
           mountPath: /var/log
