@@ -20,6 +20,15 @@ rsyslog:
     limits:
       memory: 512Mi
       cpu: 500m
+audittail:
+  resources:
+    requests:
+      memory: "25Mi"
+      cpu: "100m"
+    limits:
+      memory: "50Mi"
+      cpu: "100m"
+
 priorityClassName: ""
 metrics:
   enabled: true

@@ -124,12 +124,7 @@ spec:
           - '-f'
           - '/app-audit/app-events-output.log'
         resources:
-          requests:
-            memory: "25Mi"
-            cpu: "250m"
-          limits:
-            memory: "50Mi"
-            cpu: "500m"
+{{ toYaml .Values.audittail.resources | indent 10 }}
         volumeMounts:
           - mountPath: /app-audit
             name: audit-logs
