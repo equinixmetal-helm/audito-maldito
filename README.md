@@ -28,6 +28,10 @@ several containers:
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| audittail.resources.limits.cpu | string | `"100m"` |  |
+| audittail.resources.limits.memory | string | `"50Mi"` |  |
+| audittail.resources.requests.cpu | string | `"100m"` |  |
+| audittail.resources.requests.memory | string | `"25Mi"` |  |
 | health.readiness.initialDelaySeconds | int | `30` |  |
 | health.readiness.periodSeconds | int | `10` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -35,13 +39,13 @@ several containers:
 | image.tag | string | `"v0.5.1"` |  |
 | metrics.enabled | bool | `true` |  |
 | priorityClassName | string | `""` |  |
-| resources.limits.cpu | string | `"500m"` |  |
+| resources.limits.cpu | string | `"200m"` |  |
 | resources.limits.memory | string | `"512Mi"` |  |
-| resources.requests.cpu | string | `"250m"` |  |
+| resources.requests.cpu | string | `"200m"` |  |
 | resources.requests.memory | string | `"256Mi"` |  |
-| rsyslog.resources.limits.cpu | string | `"500m"` |  |
+| rsyslog.resources.limits.cpu | string | `"100m"` |  |
 | rsyslog.resources.limits.memory | string | `"512Mi"` |  |
-| rsyslog.resources.requests.cpu | string | `"250m"` |  |
+| rsyslog.resources.requests.cpu | string | `"100m"` |  |
 | rsyslog.resources.requests.memory | string | `"256Mi"` |  |
 
 ## Development

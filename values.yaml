@@ -7,19 +7,28 @@ image:
   tag: "v0.5.1"
 resources:
   limits:
-    cpu: 500m
+    cpu: 200m
     memory: 512Mi
   requests:
-    cpu: 250m
+    cpu: 200m
     memory: 256Mi
 rsyslog:
   resources:
     requests:
       memory: 256Mi
-      cpu: 250m
+      cpu: 100m
     limits:
       memory: 512Mi
-      cpu: 500m
+      cpu: 100m
+audittail:
+  resources:
+    requests:
+      memory: "25Mi"
+      cpu: "100m"
+    limits:
+      memory: "50Mi"
+      cpu: "100m"
+
 priorityClassName: ""
 metrics:
   enabled: true
