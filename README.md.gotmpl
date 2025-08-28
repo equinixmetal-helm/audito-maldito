@@ -31,32 +31,11 @@ several containers:
 ### Prerequisites
 
 - [helm](https://helm.sh/docs/intro/install/)
-- [helm-docs](https://github.com/norwoodj/helm-docs)
 
-### Testing
+### Documentation
 
-Ensure that the documentation is up to date before pushing a pull request:
-
-```bash
-helm-docs
-```
+The helm documentation will automatically be re-generated when pushing up a pull request.
 
 ### Releasing
 
-There is a useful Makefile target that's useful to cut a release. So, simply do:
-
-```bash
-TAG=$RELEASE_VERSION make release
-```
-
-And the release will happen.
-
-Note that this project follows the [Semantic Versioning scheme](https://semver.org/), so
-make sure to follow it when cutting releases.
-
-The `TAG` Makefile variable takes a release version without the `v` prefix. For example,
-if you want to cut a release with version `v1.2.3`, you'd do:
-
-```bash
-TAG=1.2.3 make release
-```
+This chart uses [release-please](https://github.com/googleapis/release-please) to automate releases. [release-please](https://github.com/googleapis/release-please?tab=readme-ov-file#how-should-i-write-my-commits) assumes you are using [conventional commit messages](https://www.conventionalcommits.org/) to determine the next release version.

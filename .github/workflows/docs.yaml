@@ -1,30 +1,23 @@
----
-name: Docs
+name: Generate Helm documentation
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main
-  pull_request:
-
 jobs:
-  docs:
+  generate:
     runs-on: ubuntu-latest
-    env:
-      HELM_DOCS_VERSION: 1.11.0
+    permissions:
+      contents: write # allow committing and pushing changes to the repo
+      pull-requests: write # allow commenting on PRs
     steps:
-      - uses: actions/checkout@v3
-      - name: install helm-docs
-        run: |
-          cd /tmp
-          wget https://github.com/norwoodj/helm-docs/releases/download/v${{env.HELM_DOCS_VERSION}}/helm-docs_${{env.HELM_DOCS_VERSION}}_Linux_x86_64.tar.gz
-          tar -xvf helm-docs_${{env.HELM_DOCS_VERSION}}_Linux_x86_64.tar.gz
-          sudo mv helm-docs /usr/local/sbin
-
-      - name: run helm-docs
-        run: |
-          helm-docs -t README.md.gotmpl -o README.md
-
-      - name: Fail if there are changes
-        run: |
-          git diff --exit-code
-        if: ${{ github.event_name == 'pull_request' }}
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Run helm-docs
+        uses: losisin/helm-docs-github-action@v1
+        with:
+          input: values.yaml
+          git-push: true
+          git-push-user-name: "github-actions[bot]"
+          git-push-user-email: "github-actions[bot]@users.noreply.github.com"
+          git-commit-message: "chore: update Helm documentation"
