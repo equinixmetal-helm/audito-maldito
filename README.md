@@ -53,7 +53,6 @@ several containers:
 ### Prerequisites
 
 - [helm](https://helm.sh/docs/intro/install/)
-- [helm-docs](https://github.com/norwoodj/helm-docs)
 
 ### Documentation
 
