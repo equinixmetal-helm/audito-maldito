@@ -24,18 +24,3 @@ jobs:
           branch: gh-pages
           app_version: ${{  github.ref_name }}
           chart_version: ${{  github.ref_name }}
-
-  gh-release:
-    name: Create GitHub Release
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          generate_release_notes: true
-
