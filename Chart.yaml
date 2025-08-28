@@ -4,5 +4,5 @@ description: |
   A Helm chart for deploying audito-maldito in Kubernetes provided
   and maintained by your friends at Equinix Metal.
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: v0.0.1
