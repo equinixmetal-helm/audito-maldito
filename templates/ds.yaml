@@ -129,7 +129,7 @@ spec:
           - mountPath: /app-audit
             name: audit-logs
       - name: rsyslog
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}-rsyslog"
+        image: "{{ .Values.image.repository }}-rsyslog:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: Always
         command:
           - "rsyslogd"
