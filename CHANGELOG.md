@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/equinixmetal-helm/audito-maldito/compare/v1.0.1...v1.0.2) (2025-09-03)
+
+
+### Bug Fixes
+
+* update audito-maldito image ([c52ee57](https://github.com/equinixmetal-helm/audito-maldito/commit/c52ee577c001625d4f1721de789269fedecd90e1))
+
 ## [1.0.1](https://github.com/equinixmetal-helm/audito-maldito/compare/v1.0.0...v1.0.1) (2025-08-28)
 
 
